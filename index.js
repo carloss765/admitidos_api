@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const app = require('./src/app.js');
-const config = require('./config.js');
 dotenv.config();
 
 app.listen(app.get('port'), () => {

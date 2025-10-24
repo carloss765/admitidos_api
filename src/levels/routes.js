@@ -1,5 +1,5 @@
 const express = require("express");
-const respuestas = require("../../red/res.js");
+const respuestas = require("../red/res.js");
 const config = require("../../config.js");
 const controller = require("./controller.js");
 
@@ -28,7 +28,7 @@ async function info(req, res) {
 async function destroy(req, res) {
   try {
     const item = await controller.destroy(req.body);
-    respuestas.success(req, res, "Facultad eliminada correctamente", 200);
+    respuestas.success(req, res, "Nivel eliminado correctamente", 200);
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }
@@ -37,7 +37,7 @@ async function destroy(req, res) {
 async function insert(req, res) {
   try {
     const item = await controller.insert(req.body);
-    respuestas.success(req, res, "Facultad creada correctamente", 200);
+    respuestas.success(req, res, "Nivel creado correctamente", 200);
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }
@@ -46,7 +46,7 @@ async function insert(req, res) {
 async function update(req, res) {
   try {
     const item = await controller.update(req.body);
-    respuestas.success(req, res, "Facultad actualizada correctamente", 200);
+    respuestas.success(req, res, "Nivel actualizado correctamente", 200);
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }

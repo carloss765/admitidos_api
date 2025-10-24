@@ -1,1 +1,359 @@
-GET http://localhost:3000/api/facultades
+### Variables
+@baseUrl = http://localhost:4000/api
+@token = your_jwt_token_here
+
+# ============================================================================
+# AUTHENTICATION ENDPOINTS
+# ============================================================================
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Verify Token
+GET {{baseUrl}}/auth/verify
+Authorization: Bearer {{token}}
+
+### Change Password
+POST {{baseUrl}}/auth/change-password
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "currentPassword": "password123",
+  "newPassword": "newPassword456"
+}
+
+# ============================================================================
+# FACULTADES ENDPOINTS
+# ============================================================================
+
+### Get All Facultades
+GET {{baseUrl}}/facultades
+
+### Get Facultad by ID
+GET {{baseUrl}}/facultades/info/1
+
+### Create Facultad
+POST {{baseUrl}}/facultades/store
+Content-Type: application/json
+
+{
+  "nombre": "Facultad de Ingeniería",
+  "ubicacion": "Campus Central",
+  "estado": 1
+}
+
+### Update Facultad
+PUT {{baseUrl}}/facultades/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre": "Facultad de Ciencias Actualizada",
+  "ubicacion": "Campus Norte",
+  "estado": 1
+}
+
+### Delete Facultad
+DELETE {{baseUrl}}/facultades/destroy
+Content-Type: application/json
+
+{
+  "id": 4
+}
+
+# ============================================================================
+# LEVELS ENDPOINTS
+# ============================================================================
+
+### Get All Levels
+GET {{baseUrl}}/levels
+
+### Get Level by ID
+GET {{baseUrl}}/levels/info/1
+
+### Create Level
+POST {{baseUrl}}/levels/store
+Content-Type: application/json
+
+{
+  "name": "Pregrado",
+  "status": 1
+}
+
+### Update Level
+PUT {{baseUrl}}/levels/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Postgrado Actualizado",
+  "status": 1
+}
+
+### Delete Level
+DELETE {{baseUrl}}/levels/destroy
+Content-Type: application/json
+
+{
+  "id": 2
+}
+
+# ============================================================================
+# PROGRAMS ENDPOINTS
+# ============================================================================
+
+### Get All Programs
+GET {{baseUrl}}/programs
+
+### Get Program by ID
+GET {{baseUrl}}/programs/info/1
+
+### Create Program
+POST {{baseUrl}}/programs/store
+Content-Type: application/json
+
+{
+  "name": "Ingeniería de Sistemas",
+  "facultad_id": 1,
+  "level_id": 1,
+  "status": 1
+}
+
+### Update Program
+PUT {{baseUrl}}/programs/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Ingeniería de Software",
+  "facultad_id": 1,
+  "level_id": 1,
+  "status": 1
+}
+
+### Delete Program
+DELETE {{baseUrl}}/programs/destroy
+Content-Type: application/json
+
+{
+  "id": 3
+}
+
+# ============================================================================
+# DOCUMENT TYPE ENDPOINTS
+# ============================================================================
+
+### Get All Document Types
+GET {{baseUrl}}/document-type
+
+### Get Document Type by ID
+GET {{baseUrl}}/document-type/info/1
+
+### Create Document Type
+POST {{baseUrl}}/document-type/store
+Content-Type: application/json
+
+{
+  "name": "DNI",
+  "abbreviation": "DNI",
+  "status": 1
+}
+
+### Update Document Type
+PUT {{baseUrl}}/document-type/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Documento Nacional de Identidad",
+  "abbreviation": "DNI",
+  "status": 1
+}
+
+### Delete Document Type
+DELETE {{baseUrl}}/document-type/destroy
+Content-Type: application/json
+
+{
+  "id": 3
+}
+
+# ============================================================================
+# PERIOD ENDPOINTS
+# ============================================================================
+
+### Get All Periods
+GET {{baseUrl}}/period
+
+### Get Period by ID
+GET {{baseUrl}}/period/info/1
+
+### Create Period
+POST {{baseUrl}}/period/store
+Content-Type: application/json
+
+{
+  "name": "2025-I",
+  "start_date": "2025-03-01",
+  "end_date": "2025-07-31",
+  "status": 1
+}
+
+### Update Period
+PUT {{baseUrl}}/period/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "2025-I Actualizado",
+  "start_date": "2025-03-15",
+  "end_date": "2025-08-15",
+  "status": 1
+}
+
+### Delete Period
+DELETE {{baseUrl}}/period/destroy
+Content-Type: application/json
+
+{
+  "id": 2
+}
+
+# ============================================================================
+# ADMISSION STATUS ENDPOINTS
+# ============================================================================
+
+### Get All Admission Status
+GET {{baseUrl}}/admission-status
+
+### Get Admission Status by ID
+GET {{baseUrl}}/admission-status/info/1
+
+### Create Admission Status
+POST {{baseUrl}}/admission-status/store
+Content-Type: application/json
+
+{
+  "name": "Admitido",
+  "description": "Estudiante admitido al programa",
+  "status": 1
+}
+
+### Update Admission Status
+PUT {{baseUrl}}/admission-status/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Admitido y Matriculado",
+  "description": "Estudiante admitido y ya matriculado",
+  "status": 1
+}
+
+### Delete Admission Status
+DELETE {{baseUrl}}/admission-status/destroy
+Content-Type: application/json
+
+{
+  "id": 3
+}
+
+# ============================================================================
+# PEOPLE ENDPOINTS
+# ============================================================================
+
+### Get All People
+GET {{baseUrl}}/people
+
+### Get Person by ID
+GET {{baseUrl}}/people/info/1
+
+### Create Person
+POST {{baseUrl}}/people/store
+Content-Type: application/json
+
+{
+  "name": "Juan Pérez",
+  "email": "juan.perez@example.com",
+  "password": "$2a$10$YourHashedPasswordHere",
+  "document_type_id": 1,
+  "document_number": "12345678",
+  "phone": "987654321",
+  "address": "Av. Principal 123"
+}
+
+### Update Person
+PUT {{baseUrl}}/people/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Juan Carlos Pérez",
+  "email": "juancarlos.perez@example.com",
+  "document_type_id": 1,
+  "document_number": "12345678",
+  "phone": "987654321",
+  "address": "Av. Principal 456"
+}
+
+### Delete Person
+DELETE {{baseUrl}}/people/destroy
+Content-Type: application/json
+
+{
+  "id": 5
+}
+
+# ============================================================================
+# ADMISSIONS ENDPOINTS
+# ============================================================================
+
+### Get All Admissions
+GET {{baseUrl}}/admissions
+
+### Get Admission by ID
+GET {{baseUrl}}/admissions/info/1
+
+### Create Admission
+POST {{baseUrl}}/admissions/store
+Content-Type: application/json
+
+{
+  "person_id": 1,
+  "program_id": 1,
+  "period_id": 1,
+  "admission_status_id": 1,
+  "admission_date": "2025-01-15",
+  "score": 85.5,
+  "observations": "Admitido con buen puntaje"
+}
+
+### Update Admission
+PUT {{baseUrl}}/admissions/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "person_id": 1,
+  "program_id": 1,
+  "period_id": 1,
+  "admission_status_id": 2,
+  "admission_date": "2025-01-15",
+  "score": 90.0,
+  "observations": "Actualizado: Matriculado exitosamente"
+}
+
+### Delete Admission
+DELETE {{baseUrl}}/admissions/destroy
+Content-Type: application/json
+
+{
+  "id": 3
+}

@@ -28,7 +28,12 @@ async function info(req, res) {
 async function destroy(req, res) {
   try {
     const item = await controller.destroy(req.body);
-    respuestas.success(req, res, "Facultad eliminada correctamente", 200);
+    respuestas.success(
+      req,
+      res,
+      "Tipo de documento eliminado correctamente",
+      200
+    );
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }
@@ -37,7 +42,7 @@ async function destroy(req, res) {
 async function insert(req, res) {
   try {
     const item = await controller.insert(req.body);
-    respuestas.success(req, res, "Facultad creada correctamente", 200);
+    respuestas.success(req, res, "Tipo de documento creado correctamente", 200);
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }
@@ -46,7 +51,12 @@ async function insert(req, res) {
 async function update(req, res) {
   try {
     const item = await controller.update(req.body);
-    respuestas.success(req, res, "Facultad actualizada correctamente", 200);
+    respuestas.success(
+      req,
+      res,
+      "Tipo de documento actualizado correctamente",
+      200
+    );
   } catch (error) {
     respuestas.error(req, res, error, 500);
   }
